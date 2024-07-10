@@ -1,0 +1,22 @@
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o common.o common.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o menu.o menu.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o states.o states.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o getname.o getname.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o thread.o thread.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o usb.o usb.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o memory.o memory.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o main.o main.c
+psp-gcc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing   -c -o stub.o stub.S
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o exports.o exports.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o image.o image.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o pict/screenshot.o pict/screenshot.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o pict/file.o pict/file.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o pict/pictdraw.o pict/pictdraw.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o syslibc/syslibc.o syslibc/syslibc.c
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150   -c -o syslibc/qsort.o syslibc/qsort.c
+psp-gcc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing   -c -o cmlib/cmLibCtrl.o cmlib/cmLibCtrl.S
+psp-gcc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing   -c -o cmlib/cmlibAudio.o cmlib/cmlibAudio.S
+psp-gcc -IC:/pspsdk/psp/sdk/include/libc -I. -IC:/pspsdk/psp/sdk/include -Os -G 0 -Wall -fno-strict-aliasing -D_PSP_FW_VERSION=150  -L. -LC:/pspsdk/psp/sdk/lib -Wl,-q,-TC:/pspsdk/psp/sdk/lib/linkfile.prx -mno-crt0 -nostartfiles -mno-crt0 -nostartfiles  common.o menu.o states.o getname.o thread.o usb.o memory.o main.o stub.o exports.o image.o pict/screenshot.o pict/file.o pict/pictdraw.o syslibc/syslibc.o syslibc/qsort.o cmlib/cmLibCtrl.o cmlib/cmlibAudio.o -lpspsystemctrl_kernel -lpsppower -lpsprtc -lpspkubridge -lpspusb -lpspusbstor -lpspsysmem_kernel libinip.a ./cmlib/libcmlibMenu.a ./cmlib/libcmlibConv.a -lpspdebug -lpspdisplay_driver -lpspctrl_driver -lpspsdk  -lpspkernel -o cushome.elf
+psp-fixup-imports cushome.elf
+psp-prxgen cushome.elf cushome.prx
+psp-build-exports -s exports.exp
